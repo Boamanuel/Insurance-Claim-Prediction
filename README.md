@@ -93,14 +93,3 @@ dataset.
 
 
 
-## Known limitations / next steps
-
-- The PCA exploration from the original notebook is not part of the
-  production pipeline (it was exploratory, not something the final models
-  depend on) — see the notebook if you want that analysis.
-- No hyperparameter tuning (e.g. `GridSearchCV`) is included yet — each
-  model uses either notebook-derived or default parameters.
-- No CI workflow yet (see `.github/workflows/` suggestion below) — tests
-  currently need to be run manually.
-- The SVM's `probability=True` setting adds training overhead; drop it if
-  you don't need probability outputs and want faster training.
