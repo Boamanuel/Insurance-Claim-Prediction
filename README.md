@@ -64,8 +64,6 @@ pip install -r requirements.txt
 ### Data
 
 The raw dataset (`train.csv`) is **not committed** to this repo
-Place your training CSV at `data/train.csv` (must contain an `id` column, a
-`target` column, and the `ps_*` feature columns) before running the pipeline.
 
 ### Train
 
