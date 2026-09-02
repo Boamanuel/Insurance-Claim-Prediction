@@ -1,0 +1,27 @@
+# Data (large / private — never commit raw datasets)
+data/*.csv
+data/*.zip
+
+# Trained model artifacts (regenerate via `python -m src.train`)
+models/*.joblib
+models/*.json
+
+# Logs
+logs/*.log*
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+.ipynb_checkpoints/
+
+# Environments
+.venv/
+venv/
+env/
+
+# OS/editor
+.DS_Store
+.vscode/
+.idea/
