@@ -63,8 +63,7 @@ pip install -r requirements.txt
 
 ### Data
 
-The raw dataset (`train.csv`) is **not committed** to this repo — it's a
-large file and typically the property of whoever's data you trained on.
+The raw dataset (`train.csv`) is **not committed** to this repo
 Place your training CSV at `data/train.csv` (must contain an `id` column, a
 `target` column, and the `ps_*` feature columns) before running the pipeline.
 
@@ -94,26 +93,7 @@ pytest
 Tests use small synthetic data, so they run without needing the real
 dataset.
 
-## Design notes / what changed from the notebook
 
-- **Logging over print statements** — every stage (load, preprocess, train,
-  evaluate, save) logs structured, timestamped messages to console and to a
-  rotating log file, so a failed run is debuggable after the fact.
-- **Model selection by ROC-AUC, not accuracy** — with ~96% of the data in
-  one class, a model that predicts the majority class every time scores
-  ~96% accuracy while being useless. The pipeline logs accuracy for
-  reference but selects and reports based on ROC-AUC and minority-class F1.
-- **SMOTE applied to the training split only** — resampling before the
-  split (or on the test set) leaks information between train and test;
-  the original notebook already got this right, and it's preserved here.
-- **Stratified train/test split** — added `stratify=y` to keep the
-  minority class proportionally represented in both splits, which matters
-  more as sample size in the positive class shrinks.
-- **Config centralized** — column lists, split ratios, and hyperparameters
-  live in one `config.py` instead of being repeated across cells.
-- **Reproducibility metadata** — every saved model ships with a JSON file
-  recording which features it expects, its metrics, and when it was
-  trained, so a prediction six months from now can be traced back.
 
 ## Known limitations / next steps
 
